@@ -1,0 +1,53 @@
+<div class="form">
+  <ul class="tab-group">
+    <li class="tab active"><a href="#signup">Registrieren</a></li>
+    <li class="tab"><a href="#login">Einloggen</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="signup">
+      <h1>Registrieren</h1>
+      <div class="top-row">
+        <div class="field-wrap">
+          <label> Vorname<span class="req">*</span> </label>
+          <input id="regvor" type="text" required autocomplete="off" />
+        </div>
+
+        <div class="field-wrap">
+          <label> Nachname<span class="req">*</span> </label>
+          <input id="regnach" type="text" required autocomplete="off" />
+        </div>
+      </div>
+
+      <div class="field-wrap">
+        <label> Email<span class="req">*</span> </label>
+        <input id="regemail" type="email" required autocomplete="off" />
+      </div>
+
+      <div class="field-wrap">
+        <label> Password<span class="req">*</span> </label>
+        <input id="regpassword" type="password" required autocomplete="off" />
+      </div>
+
+      <button type="submit" class="lgnbutton button-block" onclick="register()">
+        Registrieren
+      </button>
+    </div>
+
+    <div id="login">
+      <h1>Einloggen</h1>
+      <div class="field-wrap">
+        <label> Email<span class="req">*</span> </label>
+        <input id="lgnemail" type="email" required autocomplete="off" />
+      </div>
+
+      <div class="field-wrap">
+        <label> Password<span class="req">*</span> </label>
+        <input id="lgnpassword" type="password" required autocomplete="off" />
+      </div>
+      <button class="lgnbutton button-block" onclick="login()">Log In</button>
+    </div>
+  </div>
+  <!-- tab-content -->
+</div>
+<!-- /form -->

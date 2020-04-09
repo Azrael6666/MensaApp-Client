@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.dhbw.mensaapp" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <name>MensaApp</name>
+    <description>
+        Bewerte deine Mensa Speisen
+    </description>
+    <author email="urrehman.umar@outlook.de" href="http://cordova.io">
+        Umar Ur-Rehman und Fred Neumann
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <icon density="mdpi" src="logo/mipmap-mdpi/ic_launcher.png" />
+    <icon density="hdpi" src="logo/mipmap-hdpi/ic_launcher.png" />
+    <icon density="xhdpi" src="logo/mipmap-xhdpi/ic_launcher.png" />
+    <allow-intent href="market:*" />
+    <preference name="loglevel" value="DEBUG" />
+</widget>
