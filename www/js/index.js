@@ -313,6 +313,7 @@ function register() {
     contentType: "application/x-www-form-urlencoded",
     success: (data) => {
       window.localStorage.setItem("token", data.token);
+      window.localStorage.setItem("name", data.name);
       loadUser();
     },
     error: (error) => {
@@ -368,35 +369,50 @@ function rate() {
         if (typeof checkValue == "undefined") {
           newValues[i].type = "add";
         } else if (checkValue.rate == e.rate) {
-          newValues[i].type == "same";
+          newValues[i].type = "same";
         } else {
           newValues[i].type = "edit";
           newValues[i].oldRate = checkValue.rate;
         }
       });
-      newValues.filter((e) => {
+      newValues = newValues.filter((e) => {
         if (e.type == "same") {
           return false;
         } else {
           return true;
         }
       });
-      $.ajax({
-        url: "https://xyzq.ga/pushRating",
-        type: "POST",
-        datatype: "json",
-        data: {
-          values: JSON.stringify(newValues),
-        },
-        contentType: "application/x-www-form-urlencoded",
-        success: (data) => {
-          console.log(data);
-          loadAcquired();
-          prevented = false;
-        },
-      });
-      rateSets[setPlace] = clonedValues;
-      window.localStorage.setItem("rateSets", JSON.stringify(rateSets));
+      if (newValues.length != 0) {
+        $.ajax({
+          url: "https://xyzq.ga/pushRating",
+          type: "POST",
+          datatype: "json",
+          headers: { Authorization: `Bearer ${token}` },
+          data: {
+            values: JSON.stringify(newValues),
+          },
+          contentType: "application/x-www-form-urlencoded",
+          success: (data) => {
+            loadAcquired();
+            prevented = false;
+            rateSets[setPlace] = clonedValues;
+            window.localStorage.setItem("rateSets", JSON.stringify(rateSets));
+            $("#circlebtncontainer").css("display", "none");
+          },
+          error: (error) => {
+            prevented = false;
+            errorMessage("Fehlgeschlagen");
+          },
+        });
+      } else {
+        errorMessage("Sie haben keine Änderung der Bewertung durchgeführt");
+        $("#circlebtncontainer").css("display", "none");
+        prevented = false;
+      }
+    } else {
+      errorMessage("Sie haben keine Änderung der Bewertung durchgeführt");
+      $("#circlebtncontainer").css("display", "none");
+      prevented = false;
     }
   } else {
     errorMessage("Bitte warten Sie einen Moment");

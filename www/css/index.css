@@ -175,6 +175,8 @@ body {
 
 .header {
   text-align: center;
+  margin: 0;
+  padding-top: 20px;
 }
 
 .ratingdiv {
@@ -813,7 +815,7 @@ textarea {
   margin-bottom: 25px;
   margin-left: 70%;
 }
-}
+
 .circlebtn.circle:hover {
   background: #16a085;
   padding: -2px;
